@@ -21,11 +21,11 @@ const AddTodo: React.FC = () => {
          <svg
         onClick={addTodo}
         xmlns="http://www.w3.org/2000/svg"
-        className="bg-purple-900 text-white rounded-full w-5 h-5 cursor-pointer hover:bg-purple-700"
+        className="bg-violet-600 text-white rounded-full w-5 h-5 cursor-pointer hover:bg-purple-700"
         viewBox="0 0 24 24"
         fill="none"
         stroke="currentColor"
-        strokeWidth="2"
+        strokeWidth="4"
         strokeLinecap="round"
         strokeLinejoin="round"
       >
@@ -40,7 +40,7 @@ const AddTodo: React.FC = () => {
       />
       <button
         onClick={addTodo}
-        className="bg-purple-900 text-white my-1 rounded-md hover:bg-purple-700 px-4"
+        className="bg-violet-600 text-white my-1 rounded-md hover:bg-purple-700 px-4"
       >
         Add Item
       </button>

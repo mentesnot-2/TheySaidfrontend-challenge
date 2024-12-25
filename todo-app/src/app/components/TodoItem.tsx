@@ -29,7 +29,7 @@ const TodoItem: React.FC<Props> = ({ todo }) => {
                     onChange={toggleComplete}
                     checked={todo.completed}
                 />
-                <span className="w-4 h-4 border-2 border-purple-600 rounded-full inline-block transition-all duration-200">
+                <span className="w-4 h-4 border-2 border-violet-600 rounded-full inline-block transition-all duration-200">
                     <span className="w-2 h-2 bg-purple-600 rounded-full absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 scale-0 transition-transform duration-200"></span>
                 </span>
             </label>
