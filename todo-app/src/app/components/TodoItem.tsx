@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useSetRecoilState } from 'recoil';
 import { todoState, Todo } from '../recoil/todoState';
+import Modal from './Modal';
 
 type Props = {
   todo: Todo;
@@ -8,6 +9,7 @@ type Props = {
 
 const TodoItem: React.FC<Props> = ({ todo }) => {
   const setTodos = useSetRecoilState(todoState);
+  const [isEditing, setIsEditing] = useState(false);
 
   const toggleComplete = () => {
     setTodos((prevState) => ({
@@ -16,6 +18,24 @@ const TodoItem: React.FC<Props> = ({ todo }) => {
         item.id === todo.id ? { ...item, completed: !item.completed } : item
       ),
     }));
+  };
+
+  const deleteTodo = () => {
+    setTodos((prevState) => ({
+      ...prevState,
+      todos: prevState.todos.filter((item) => item.id !== todo.id),
+    }));
+  };
+
+  const updateTodo = (newText: string) => {
+    if (newText.trim()) {
+      setTodos((prevState) => ({
+        ...prevState,
+        todos: prevState.todos.map((item) =>
+          item.id === todo.id ? { ...item, text: newText } : item
+        ),
+      }));
+    }
   };
 
   return (
@@ -61,6 +81,28 @@ const TodoItem: React.FC<Props> = ({ todo }) => {
       >
         {todo.text}
       </span>
+
+      <div className="ml-auto flex gap-2">
+        <button
+          onClick={() => setIsEditing(true)}
+          className="px-4 py-1 bg-blue-500 text-white rounded-md hover:bg-blue-600"
+        >
+          Edit
+        </button>
+        <button
+          onClick={deleteTodo}
+          className="px-4 py-1 bg-red-500 text-white rounded-md hover:bg-red-600"
+        >
+          Delete
+        </button>
+      </div>
+
+      <Modal
+        isOpen={isEditing}
+        onClose={() => setIsEditing(false)}
+        onSubmit={updateTodo}
+        currentText={todo.text}
+      />
     </div>
   );
 };

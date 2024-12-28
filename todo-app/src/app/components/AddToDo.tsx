@@ -8,13 +8,12 @@ const AddTodo: React.FC = () => {
 
   const addTodo = () => {
     if (text.trim()) {
-      // Generate a new todo object and add it to the todos array
       const newTodo = { id: Date.now(), text, completed: false };
       setTodos((prev) => ({
         ...prev,
         todos: [...prev.todos, newTodo],
       }));
-      setText(''); // Reset the input field after adding a todo
+      setText(''); 
     }
   };
 
