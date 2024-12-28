@@ -8,20 +8,22 @@ const AddTodo: React.FC = () => {
 
   const addTodo = () => {
     if (text.trim()) {
-      setTodos((prev) => [
+      // Generate a new todo object and add it to the todos array
+      const newTodo = { id: Date.now(), text, completed: false };
+      setTodos((prev) => ({
         ...prev,
-        { id: Date.now(), text, completed: false },
-      ]);
-      setText('');
+        todos: [...prev.todos, newTodo],
+      }));
+      setText(''); // Reset the input field after adding a todo
     }
   };
 
   return (
-    <div className="flex items-center gap-2 mt-4 border-t border-b">
-         <svg
+    <div className="flex items-center gap-2 mt-4 p-4 rounded-lg border border-gray-300 bg-white dark:bg-gray-800 dark:border-gray-700">
+      <svg
         onClick={addTodo}
         xmlns="http://www.w3.org/2000/svg"
-        className="bg-violet-600 text-white rounded-full w-5 h-5 cursor-pointer hover:bg-purple-700"
+        className="bg-violet-600 text-white rounded-full w-6 h-6 cursor-pointer hover:bg-purple-700"
         viewBox="0 0 24 24"
         fill="none"
         stroke="currentColor"
@@ -35,8 +37,8 @@ const AddTodo: React.FC = () => {
         type="text"
         value={text}
         onChange={(e) => setText(e.target.value)}
-        placeholder="Memorize the dictionary"
-        className="flex-1 focus:outline-none"
+        placeholder="Add a new task..."
+        className="flex-1 focus:outline-none bg-transparent dark:text-white dark:placeholder-gray-400"
       />
       <button
         onClick={addTodo}

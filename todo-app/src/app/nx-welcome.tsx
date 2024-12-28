@@ -475,7 +475,7 @@ export function NxWelcome({ title }: { title: string }) {
                 <a
                   href="https://nx.dev/getting-started/intro?utm_source=nx-project"
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                   className="list-item-link"
                 >
                   <svg

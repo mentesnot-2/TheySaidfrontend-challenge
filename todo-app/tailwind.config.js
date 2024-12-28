@@ -3,6 +3,7 @@ const { join } = require('path');
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  // Define content paths for Tailwind to scan
   content: [
     join(
       __dirname,
@@ -11,7 +12,10 @@ module.exports = {
     ...createGlobPatternsForDependencies(__dirname),
   ],
   theme: {
-    extend: {},
+    extend: {
+      // You can extend the theme here if needed
+    },
   },
+  darkMode: 'class', // Enable dark mode with 'class' strategy
   plugins: [],
 };
