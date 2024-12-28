@@ -41,7 +41,7 @@ const TodoItem: React.FC<Props> = ({ todo }) => {
   return (
     <div
       className={`flex items-center gap-4 p-4 rounded-lg transition-all duration-300 mt-4
-        ${todo.completed ? 'bg-gradient-to-r from-green-400 to-green-600 text-white' : 'bg-white border border-gray-300 dark:bg-gray-800 dark:border-gray-700'}
+        ${todo.completed ? 'bg-gradient-to-r from-red-400 to-red-600 text-white' : 'bg-white border border-gray-300 dark:bg-gray-800 dark:border-gray-700'}
         shadow-md hover:shadow-xl hover:scale-105 hover:bg-gray-100 dark:hover:bg-gray-700`}
     >
       <label className="relative cursor-pointer">
@@ -81,7 +81,7 @@ const TodoItem: React.FC<Props> = ({ todo }) => {
       >
         {todo.text}
       </span>
-
+     {!todo.completed &&
       <div className="ml-auto flex gap-2">
         <button
           onClick={() => setIsEditing(true)}
@@ -96,6 +96,7 @@ const TodoItem: React.FC<Props> = ({ todo }) => {
           Delete
         </button>
       </div>
+      }
 
       <Modal
         isOpen={isEditing}
